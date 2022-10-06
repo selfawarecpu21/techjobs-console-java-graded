@@ -59,11 +59,11 @@ public class TechJobs {
 
                 // What is their search term?
                 System.out.println("");
-                System.out.println("Search term:");
+                System.out.println("Search term:\n");
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                    printJobs(JobData.findByValue(searchTerm)); //// HERE is where findByValue is called in main
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -120,21 +120,37 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        if(someJobs.isEmpty()){
-            System.out.println("No jobs found");
+
+        if (someJobs.isEmpty()) {
+            System.out.println("No Results");
         } else {
-            for(HashMap<String, String> row : someJobs){
+            for (HashMap<String, String> jobList : someJobs) { // iterate over each row in somejobs ArrayList
                 System.out.println("*****");
-                for(String key : row.keySet()) {
-                    System.out.println(key + ": " + row.get(key));
+                for (Map.Entry<String, String> jobs : jobList.entrySet()) {
+                    System.out.println(jobs.getKey() + ": " + jobs.getValue());
                 }
                 System.out.println("*****");
-                System.out.println("");
-            }
-
-
             }
         }
-
     }
+}
 
+//        if(someJobs.isEmpty()){ // Check if someJobs is empty, if so inform the user
+//            System.out.println("No jobs found");
+//        } else {
+//                someJobs =
+//
+////            for(Map.Entry<String, String> row : someJobs.entrySet()){
+////
+////                System.out.println(row.getKey());
+////            }
+////            for(HashMap<String, String> row : someJobs){
+////                System.out.println("*****"); // add new line to string
+////                for(String key : row.keySet()) {
+////                    System.out.println(key + ": " + row.get(key));
+////                }
+////                System.out.println("*****");
+////            }
+//
+//
+//            }
